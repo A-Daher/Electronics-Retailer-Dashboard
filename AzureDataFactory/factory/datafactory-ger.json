@@ -1,0 +1,9 @@
+{
+	"name": "datafactory-ger",
+	"location": "francecentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "accbb81f-3727-4c40-ad52-bf4c078b5054",
+		"tenantId": "430b4ded-883f-4dbf-a20f-ffa5b0a51839"
+	}
+}
