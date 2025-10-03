@@ -1,0 +1,36 @@
+{
+	"name": "ds_exchange_rates_clean",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storage_connection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Exchange_Rates.csv",
+				"container": "csvfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Currency",
+				"type": "String"
+			},
+			{
+				"name": "Exchange",
+				"type": "String"
+			}
+		]
+	}
+}

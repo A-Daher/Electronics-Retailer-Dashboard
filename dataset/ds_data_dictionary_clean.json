@@ -1,0 +1,36 @@
+{
+	"name": "ds_data_dictionary_clean",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storage_connection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Data_Dictionary.csv",
+				"container": "csvfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Table",
+				"type": "String"
+			},
+			{
+				"name": "Field",
+				"type": "String"
+			},
+			{
+				"name": "Description",
+				"type": "String"
+			}
+		]
+	}
+}

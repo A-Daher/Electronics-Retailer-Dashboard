@@ -1,0 +1,60 @@
+{
+	"name": "ds_sales_clean",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storage_connection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Sales.csv",
+				"container": "csvfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Order Number",
+				"type": "String"
+			},
+			{
+				"name": "Line Item",
+				"type": "String"
+			},
+			{
+				"name": "Order Date",
+				"type": "String"
+			},
+			{
+				"name": "Delivery Date",
+				"type": "String"
+			},
+			{
+				"name": "CustomerKey",
+				"type": "String"
+			},
+			{
+				"name": "StoreKey",
+				"type": "String"
+			},
+			{
+				"name": "ProductKey",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Currency Code",
+				"type": "String"
+			}
+		]
+	}
+}

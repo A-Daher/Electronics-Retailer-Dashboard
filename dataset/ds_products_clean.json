@@ -1,0 +1,64 @@
+{
+	"name": "ds_products_clean",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_storage_connection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Products.csv",
+				"container": "csvfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ProductKey",
+				"type": "String"
+			},
+			{
+				"name": "Product Name",
+				"type": "String"
+			},
+			{
+				"name": "Brand",
+				"type": "String"
+			},
+			{
+				"name": "Color",
+				"type": "String"
+			},
+			{
+				"name": "Unit Cost USD",
+				"type": "String"
+			},
+			{
+				"name": "Unit Price USD",
+				"type": "String"
+			},
+			{
+				"name": "SubcategoryKey",
+				"type": "String"
+			},
+			{
+				"name": "Subcategory",
+				"type": "String"
+			},
+			{
+				"name": "CategoryKey",
+				"type": "String"
+			},
+			{
+				"name": "Category",
+				"type": "String"
+			}
+		]
+	}
+}
