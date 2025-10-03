@@ -10,8 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Products.csv",
-				"container": "csvfiles"
+				"fileName": "ds_products_clean.csv",
+				"folderPath": "Products",
+				"container": "clean"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

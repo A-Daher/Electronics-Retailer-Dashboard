@@ -10,8 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Exchange_Rates.csv",
-				"container": "csvfiles"
+				"fileName": "ds_exchange_rates_clean.csv",
+				"folderPath": "Exchange_Rates",
+				"container": "clean"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
