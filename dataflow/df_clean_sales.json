@@ -33,7 +33,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"SourceSales derive({Order Number} = ERROR_FUNCTION('case(condition, valeur_si_vrai, condition, valeur_si_vrai, ..., valeur_par_défaut)'),",
+				"SourceSales derive({Order Number} = iif(isNull(OrderNumber) || OrderNumber < 0, -1, OrderNumber),",
 				"          sales_quality = (iif(!isNull({Order Date}), 25, 0) + \r",
 				"iif(!isNull(Quantity), 25, 0) + \r",
 				"iif(!isNull(ProductKey), 25, 0) + \r",
