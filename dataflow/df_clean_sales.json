@@ -38,7 +38,9 @@
 				"          CustomerKey = toInteger(iif(isNull(CustomerKey), -1, CustomerKey)),",
 				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
-				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey)))) ~> derivedColumn1"
+				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
+				"          {Order Date} = coalesce(toDate(`Order Date`, 'dd/MM/yyyy'), currentDate()),",
+				"          {Delivery Date} = coalesce(toDate(`Delivery Date`, 'dd/MM/yyyy'), currentDate())) ~> derivedColumn1"
 			]
 		}
 	}
