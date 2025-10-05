@@ -33,11 +33,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"SourceSales derive({Order Number} = iif(isNull(OrderNumber) || OrderNumber < 0, -1, OrderNumber),",
-				"          sales_quality = (iif(!isNull({Order Date}), 25, 0) + \r",
-				"iif(!isNull(Quantity), 25, 0) + \r",
-				"iif(!isNull(ProductKey), 25, 0) + \r",
-				"iif(Quantity >= 0, 25, 0))) ~> derivedColumn1"
+				"SourceSales derive({Order Number} = iif(isNull(OrderNumber) || OrderNumber < 0, -1, OrderNumber)) ~> derivedColumn1"
 			]
 		}
 	}
