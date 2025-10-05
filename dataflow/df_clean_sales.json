@@ -33,7 +33,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"SourceSales derive({Order Number} = iif(isNull(OrderNumber) || OrderNumber < 0, -1, OrderNumber)) ~> derivedColumn1"
+				"SourceSales derive({Order Number} = ERROR_FUNCTION('iif(isNull(OrderNumber) or OrderNumber < 0, -1, OrderNumber)')) ~> derivedColumn1"
 			]
 		}
 	}
