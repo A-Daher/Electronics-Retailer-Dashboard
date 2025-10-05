@@ -33,7 +33,12 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"SourceSales derive({Order Number} = ERROR_FUNCTION('iif(isNull(OrderNumber) or OrderNumber < 0, -1, OrderNumber)')) ~> derivedColumn1"
+				"SourceSales derive({Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`))\r",
+				",",
+				"          CustomerKey = toInteger(iif(isNull(CustomerKey), -1, CustomerKey)),",
+				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
+				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
+				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey)))) ~> derivedColumn1"
 			]
 		}
 	}
