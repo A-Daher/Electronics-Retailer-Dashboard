@@ -39,7 +39,8 @@
 				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
 				"          {Order Date} = toDate(byName('Order Date'), 'M/d/yyyy'),",
 				"          {Delivery Date} = toDate(byName('Delivery Date'), 'M/d/yyyy'),",
-				"          {Order Number} = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"          {Order Number} = ERROR_FUNCTION(''),",
+				"          colonne1 = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
