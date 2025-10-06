@@ -1,0 +1,35 @@
+{
+	"name": "df_remove_duplicates",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_sales_clean",
+						"type": "DatasetReference"
+					},
+					"name": "dfRemoveDuplicates"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {Order Number} as string,",
+				"          {Line Item} as string,",
+				"          {Order Date} as string,",
+				"          {Delivery Date} as string,",
+				"          CustomerKey as string,",
+				"          StoreKey as string,",
+				"          ProductKey as string,",
+				"          Quantity as string,",
+				"          {Currency Code} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> dfRemoveDuplicates"
+			]
+		}
+	}
+}
