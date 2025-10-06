@@ -16,9 +16,6 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
-				},
-				{
-					"name": "cast1"
 				}
 			],
 			"scriptLines": [
@@ -36,16 +33,12 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"cast1 derive({Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`)),",
+				"SourceSales derive({Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`)),",
 				"          CustomerKey = toInteger(iif(isNull(CustomerKey), -1, CustomerKey)),",
 				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
-				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey)))) ~> derivedColumn1",
-				"SourceSales cast(output(",
-				"          {Order Date} as date 'MM/dd/yyyy',",
-				"          {Delivery Date} as date 'MM/dd/yyyy'",
-				"     ),",
-				"     errors: true) ~> cast1"
+				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
+				"          {Delivery Date} = iif(     isNull(`Delivery Date`) || trim(toString(`Delivery Date`)) == '',     null(),     toTimestamp(toString(`Delivery Date`), 'M/d/yyyy') )) ~> derivedColumn1"
 			]
 		}
 	}
