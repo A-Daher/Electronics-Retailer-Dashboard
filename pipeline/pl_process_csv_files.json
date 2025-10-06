@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copier_Customers",
+				"name": "ds_Customers",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
