@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
 				}
 			],
 			"scriptLines": [
@@ -33,14 +36,12 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"SourceSales derive({Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`)),",
+				"derivedColumn2 derive({Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`)),",
 				"          CustomerKey = toInteger(iif(isNull(CustomerKey), -1, CustomerKey)),",
 				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
-				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
-				"          {Delivery Date} = ERROR_FUNCTION('toDate($[__SINGLE_QUOTE__Order Date__SINGLE_QUOTE__], __SINGLE_QUOTE__MM/dd/yyyy__SINGLE_QUOTE__)'),",
-				"          colonne2 = ERROR_FUNCTION('Delivery_raw = toString(`Delivery Date`) Delivery_trim = trim(Delivery_raw) Delivery_test = replace(Delivery_trim, __SINGLE_QUOTE__\\uFEFF__SINGLE_QUOTE__, __SINGLE_QUOTE____SINGLE_QUOTE__)'),",
-				"          each(match(ERROR_FUNCTION('Delivery_raw = toString(`Delivery Date`) Delivery_trim = trim(Delivery_raw) Delivery_test = replace(Delivery_trim, __SINGLE_QUOTE__\\uFEFF__SINGLE_QUOTE__, __SINGLE_QUOTE____SINGLE_QUOTE__)')), test = ERROR_FUNCTION('Delivery_raw = toString(`Delivery Date`) Delivery_trim = trim(Delivery_raw) Delivery_test = replace(Delivery_trim, __SINGLE_QUOTE__\\uFEFF__SINGLE_QUOTE__, __SINGLE_QUOTE____SINGLE_QUOTE__)'))) ~> derivedColumn1"
+				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey)))) ~> derivedColumn1",
+				"SourceSales derive() ~> derivedColumn2"
 			]
 		}
 	}
