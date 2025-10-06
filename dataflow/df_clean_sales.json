@@ -42,7 +42,7 @@
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
 				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey)))) ~> derivedColumn1",
 				"SourceSales cast(output(",
-				"          {Order Date} as date 'MM/dd/yyyy'",
+				"          {Order Date} as timestamp 'MM/dd/yyyy'",
 				"     ),",
 				"     errors: true) ~> cast1"
 			]
