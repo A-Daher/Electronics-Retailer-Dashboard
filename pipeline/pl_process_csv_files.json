@@ -61,7 +61,7 @@
 				]
 			},
 			{
-				"name": "ds_data_dictionary_clean",
+				"name": "ds_dictionary_clean",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
