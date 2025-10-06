@@ -38,7 +38,8 @@
 				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
 				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
-				"          {Delivery Date} = iif(     isNull(`Delivery Date`) || trim(toString(`Delivery Date`)) == '',     null(),     toTimestamp(toString(`Delivery Date`), 'M/d/yyyy') )) ~> derivedColumn1"
+				"          {Delivery Date} = iif(     isNull(`Delivery Date`) || trim(toString(`Delivery Date`)) == '',     null(),    \r",
+				" toTimestamp(toString(`Delivery Date`), 'M/d/yyyy') )) ~> derivedColumn1"
 			]
 		}
 	}
