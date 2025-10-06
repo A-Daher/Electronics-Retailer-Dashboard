@@ -33,11 +33,11 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceSales",
-				"SourceSales derive(CustomerKey = toInteger(iif(isNull(CustomerKey), -1, CustomerKey)),",
-				"          {Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`)),",
+				"SourceSales derive({Line Item} = iif(isNull(toInteger(`Line Item`)), 1, toInteger(`Line Item`)),",
 				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
-				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey)))) ~> derivedColumn1"
+				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
+				"          {Order Date} = toDate(byName('Order Date'), 'M/d/yyyy')) ~> derivedColumn1"
 			]
 		}
 	}
