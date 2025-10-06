@@ -38,7 +38,7 @@
 				"          StoreKey = toShort(iif(isNull(toInteger(StoreKey)), -1, toInteger(StoreKey))),",
 				"          Quantity = toShort(iif(isNull(toInteger(Quantity)), 0, toInteger(Quantity))),",
 				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
-				"          {Delivery Date} = toTimestamp(trim(toString(`Delivery Date`)), 'M/d/yyyy')) ~> derivedColumn1"
+				"          {Delivery Date} = ERROR_FUNCTION('Delivery_raw = toString(`Delivery Date`)__NEW_LINE_R____NEW_LINE_N__Delivery_trim = trim(Delivery_raw)__NEW_LINE_R____NEW_LINE_N__Delivery_test = replace(Delivery_trim, __SINGLE_QUOTE__\\uFEFF__SINGLE_QUOTE__, __SINGLE_QUOTE____SINGLE_QUOTE__)__NEW_LINE_R____NEW_LINE_N__')) ~> derivedColumn1"
 			]
 		}
 	}
