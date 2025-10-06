@@ -39,7 +39,7 @@
 				"          ProductKey = toShort(iif(isNull(toInteger(ProductKey)), -1, toInteger(ProductKey))),",
 				"          {Order Date} = toDate(byName('Order Date'), 'M/d/yyyy'),",
 				"          {Delivery Date} = toDate(byName('Delivery Date'), 'M/d/yyyy'),",
-				"          CustomerKey = iif(isNull(CustomerKey), toInteger(-1), CustomerKey)) ~> derivedColumn1"
+				"          CustomerKey = iif(isNull(toString(`CustomerKey`)) || trim(toString(`CustomerKey`)) == '', toInteger(-1), toInteger(`CustomerKey`))) ~> derivedColumn1"
 			]
 		}
 	}
