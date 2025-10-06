@@ -300,7 +300,7 @@
 							{
 								"source": {
 									"name": "Order Date",
-									"type": "String",
+									"type": "Date",
 									"physicalType": "String"
 								},
 								"sink": {
